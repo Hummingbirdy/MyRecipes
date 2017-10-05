@@ -27,6 +27,8 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'sqlite3'
+  gem 'yarn'
+  gem 'font-awesome-sass', '~> 4.7.0'
 end
 
 group :development do

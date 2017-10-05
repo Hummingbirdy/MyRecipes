@@ -1,23 +1,27 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Recipes</h1>
-
+<div class="row">
+  <h1>My Recipes</h1>
+  <%= button_to 'New Recipe', new_recipe_path, :id => 'add-recipe', :class => 'btn right grey', :method => :get %>
+</div>
+<br />
 <% @recipes.each do |recipe| %>
   <div class="col-md-4">
     <div class="recipe-box">
       <% if recipe.image? %>
-          <%= link_to (image_tag recipe.image.url, class: "recipe-index"), recipe %>
+          <%= link_to (image_tag recipe.image.url, class: 'recipe-index'), recipe %>
       <% end %>
       <ul>
-        <li><%= recipe.title %></li>
+        <li><%= link_to recipe.title, recipe.image.url, class:'black' %></li>
         <li><%= recipe.description %></li>
-        <li><%= link_to 'Show', recipe %> |
-          <%= link_to 'Edit', edit_recipe_path(recipe) %> |
-          <%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></li>
       </ul>
+      <div align="right">
+        <%= link_to edit_recipe_path(recipe) do %> <i class="fa fa-edit black"></i> <% end  %> |
+        <%= link_to recipe, method: :delete, data: { confirm: 'Are you sure?' } do %> <i class="fa fa-window-close black"></i><% end %>
+      </div>
+
     </div><!-- /recipe-box-->
   </div><!--col-md-4-->
 <% end %>
 <br>
 
-<%= link_to 'New Recipe', new_recipe_path %>
+
